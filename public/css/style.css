@@ -1,0 +1,274 @@
+/* body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+.navbar {
+   height: 5rem;
+   background-color: white;
+}
+
+.fa-compass {
+   color: #fe424d;
+   font-size: 2rem;
+}
+
+.nav-link {
+   color: #222222 !important;
+}
+
+
+
+/* Footer */
+
+.f-info-links a {
+   text-decoration: none;
+   color: #222222;
+}
+
+.f-info-links a:hover {
+   text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials, .f-info-brand {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.f-info-socials i {
+   font-size: 1.2 rem;
+   margin-right: 1rem;
+}
+
+.f-info {
+   text-align: center;
+   height: 8rem;
+   background-color: #ebebeb;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: space-evenly;
+}
+
+
+/* Cards */
+.listing-card {
+  margin-bottom: 2rem;
+}
+
+/* Review cards */
+.review-card {
+    border: 1px solid #222 !important;
+    border-radius: 10px;
+    padding: 15px !important;
+    margin-bottom: 2rem;
+}
+
+.show-card {
+    border: 1px solid #222 !important;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+
+
+.card-img-top {
+   border-radius: 1rem !important;
+   width: 100% !important;
+   object-fit: cover !important;
+}
+
+.card-body {
+   padding: 0 !important;
+}
+
+.card-text p {
+   font-weight: 400;
+}
+
+.listing-link {
+   text-decoration: none;
+}
+
+/* Card Effect */
+
+
+.card-img-overlay{
+   opacity: 0;
+}
+
+.card-img-overlay:hover {
+   opacity: 0.2;
+   background-color: white;
+} */
+
+/* Body */
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Navbar */
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+/* Footer */
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/* Cards */
+
+.card {
+    /* border: none !important; */
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* Card Effect */
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+.add-btn {
+   background-color: #fe424d !important;
+   border: nome !important;
+}
+
+/* Edit Page */
+
+.edit-btn {
+    background-color: #fe424d !important;
+   border: nome !important;
+}
+
+/* Show Page */
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Map */
+#map { 
+    height: 400px;
+    width: 60vh;
+}
+/* 
+.custom-marker {
+    width: 30px;
+    height: 30px;
+    background-color: #ff385c;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.custom-marker:hover {
+    transform: scale(1.2);
+} */
+
+.custom-marker {
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 56, 92, 0.25);
+    border: 2px solid #ff385c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-marker::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: #ff385c;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
