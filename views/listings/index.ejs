@@ -1,4 +1,4 @@
-<% layout("/layouts/boilerplate") %> <%= success %>
+<!-- < layout("/layouts/boilerplate") %> <%= success %>
 
 <style>
     #filters {
@@ -88,7 +88,7 @@
     </div>
 
     <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
+        <div><i class="fa-solid fa-tent"></i></i></div>
         <p>Domes</p>
     </div>
 
@@ -114,26 +114,26 @@
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
 
-<% for (let listing of allListings) { %>
+< for (let listing of allListings) { %>
 
     <div class="col mb-4">
 
-        <!-- <a href="/listings/<%= listing._id %>/edit" class="listing-link"> -->
+        
 
-        <a href="/listings/<%= listing._id %>" class="listing-link">
+        <a href="/listings/<= listing._id %>" class="listing-link">
 
             <div class="card col listing-card">
 
-                <% if (listing.image && listing.image.url) { %>
+                < if (listing.image && listing.image.url) { %>
 
                     <img
-                        src="<%= listing.image.url %>"
+                        src="<= listing.image.url %>"
                         class="card-img-top"
                         alt="listing_image"
                         style="height: 20rem; object-fit: cover;"
                     >
 
-                <% } else { %>
+                < } else { %>
 
                     <img
                         src="https://placehold.co/600x400?text=No+Image"
@@ -142,20 +142,20 @@
                         style="height: 20rem; object-fit: cover;"
                     >
 
-                <% } %>
+                < } %>
 
                 <div class="card-body">
                     <p class="card-text">
-                        <b><%= listing.title %></b>
+                        <b><= listing.title %></b>
                         <br>
-                        &#8377; <%= listing.price != null ? listing.price.toLocaleString("en-IN") : "Price not available" %> /night
+                        &#8377; <= listing.price != null ? listing.price.toLocaleString("en-IN") : "Price not available" %> /night
                         <i class="tax-info">  +18% GST </i>
                     </p>
                 </div>
             </div>
         </a>
     </div>
-<% } %>
+< } %>
 
 </div>
 
@@ -170,5 +170,274 @@
                 info.style.display = "none";
             }
         }
+    });
+</script> -->
+
+
+<% layout("/layouts/boilerplate") %>
+<%= success %>
+
+<style>
+    /* Filters */
+    #filters {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 1rem 0;
+        scrollbar-width: thin;
+    }
+
+    .filter {
+        text-align: center;
+        min-width: 75px;
+        flex-shrink: 0;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        cursor: pointer;
+    }
+
+    .filter:hover {
+        opacity: 1;
+    }
+
+    .filter i {
+        font-size: 1.3rem;
+    }
+
+    .filter p {
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    /* Tax toggle */
+    .tax-toggle {
+        border: 1px solid #ccc;
+        border-radius: 1rem;
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    .tax-toggle label {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .tax-info {
+        display: none;
+        color: #555;
+        font-size: 0.85rem;
+    }
+
+    /* Listing cards */
+    .listing-card {
+        border: none !important;
+        margin-bottom: 1.5rem;
+        transition: transform 0.2s ease;
+    }
+
+    .listing-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .listing-card .card-img-top {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 1rem !important;
+    }
+
+    .listing-card .card-body {
+        padding: 0.8rem 0 !important;
+    }
+
+    .listing-card .card-text {
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    .listing-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Mobile */
+    @media (max-width: 576px) {
+        #filters {
+            gap: 1rem;
+        }
+
+        .tax-toggle {
+            margin-left: 0;
+            padding: 0.6rem;
+        }
+
+        .tax-toggle label {
+            font-size: 0.75rem;
+        }
+
+        .listing-card .card-img-top {
+            aspect-ratio: 5 / 4;
+        }
+
+        .listing-card {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<div id="filters">
+
+    <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Mountain Cities</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-tent"></i></i></div>
+        <p>Domes</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+    </div>
+
+    <div class="filter">
+        <div><i class="fa-solid fa-bowl-food"></i></div>
+        <p>Restaurants</p>
+    </div>
+
+    <div class="tax-toggle">
+        <div class="form-check form-switch mb-0">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+            >
+            <label class="form-check-label"
+                   for="flexSwitchCheckDefault">
+                Display Total After Taxes
+            </label>
+        </div>
+    </div>
+
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 mt-2">
+
+    <% for (let listing of allListings) { %>
+
+        <div class="col">
+
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+
+                <div class="card listing-card">
+
+                    <% if (listing.image && listing.image.url) { %>
+
+                        <img
+                            src="<%= listing.image.url %>"
+                            class="card-img-top"
+                            alt="<%= listing.title %>"
+                            loading="lazy"
+                        >
+
+                    <% } else { %>
+
+                        <img
+                            src="https://placehold.co/600x400?text=No+Image"
+                            class="card-img-top"
+                            alt="No image available"
+                            loading="lazy"
+                        >
+
+                    <% } %>
+
+                    <div class="card-body">
+
+                        <p class="card-text">
+                            <b><%= listing.title %></b>
+                            <br>
+
+                            &#8377;
+                            <%= listing.price != null
+                                ? listing.price.toLocaleString("en-IN")
+                                : "Price not available" %>
+                            / night
+
+                            <i class="tax-info"> +18% GST</i>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+<script>
+    const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+    taxSwitch.addEventListener("change", () => {
+
+        const taxInfo = document.querySelectorAll(".tax-info");
+
+        taxInfo.forEach((info) => {
+            info.style.display = taxSwitch.checked ? "inline" : "none";
+        });
+
     });
 </script>

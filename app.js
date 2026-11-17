@@ -3,8 +3,6 @@ if(process.env.NODE_ENV != "production") {
 }
 
 
-console.log(process.env.SECRET);
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -24,20 +22,33 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+// const dbURL = process.env.ATLASDB_URL;
+
+// main()
+//      .then(() => {
+//         console.log("connected to DB"); 
+//      })
+//      .catch((err) => {
+//         console.log(err);        
+//      })
+
+// async function main() {
+//     await mongoose.connect(dbURL)
+// }
+
 const dbURL = process.env.ATLASDB_URL;
 
-main()
-     .then(() => {
-        console.log("connected to DB"); 
-     })
-     .catch((err) => {
-        console.log(err);        
-     })
-
 async function main() {
-    await mongoose.connect(dbURL)
+    try {
+        await mongoose.connect(dbURL);
+        console.log("Connected to MongoDB Atlas");
+    } catch (err) {
+        console.error("MongoDB Connection Error:", err);
+        process.exit(1);
+    }
 }
 
+main();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -56,7 +67,7 @@ const store = MongoStore.create({
     touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
     console.log("ERROR IN MONGO SESSION STORE", err);
 })
 
@@ -66,7 +77,7 @@ const  sessionOptions = {
     resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: Date.now() + 7 ** 24 * 60 * 60 * 1000,
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
     }
@@ -87,9 +98,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// passport.serializeUser(User.authenticate());
-// passport.deserializeUser(User.deserializeUser());
-
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
@@ -98,15 +106,7 @@ app.use((req, res, next) => {
     next();
 })
 
-// app.get("/demouser", async (req, res) => {
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "delta-student",
-//     });
 
-//     let registeredUser = await User.register(fakeUser, "helloworld");
-//     res.send(registeredUser);
-// });
 
 
 app.use("/listings", listingRouter);
